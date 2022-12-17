@@ -4,7 +4,7 @@ const users = require('./users');
 const { Sequelize, DataTypes } = require('sequelize');
 const recordModel = require('./record-model');
 const DataCollection= require('./Collection');
-const userModel = require('./users');
+// const userModel = require('./users');
 
 
 const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' : process.env.DATABASE_URL;
@@ -20,7 +20,7 @@ process.env.NODE_ENV === "production"
 
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 const recordsTable = recordModel(sequelize, DataTypes);
-const userTable = userModel(sequelize, DataTypes);
+const userTable = users(sequelize, DataTypes);
 
 console.log(userTable);
 
@@ -33,6 +33,6 @@ recordsTable.belongsTo(userTable); //one record has one user
 
 module.exports = {
     db: sequelize,
-    users: userModel(sequelize, DataTypes),
+    users: users(sequelize, DataTypes),
     recordCollection:recordCollection,
 };

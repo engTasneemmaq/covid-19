@@ -2,7 +2,7 @@
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const userModel = (sequelize, DataTypes) => {
+const users = (sequelize, DataTypes) => {
   const model = sequelize.define(
     "users",
     {
@@ -36,20 +36,23 @@ const userModel = (sequelize, DataTypes) => {
     const user = await this.findOne({ where: { username: username } });
 
     const valid = await bcrypt.compare(password, user.password);
-
-    if (valid) {
+    console.log(valid);
+    if (!valid) {
       let newToken = jwt.sign({ username: user.username }, process.env.SECRET, {
         expiresIn: "15m",
       });
+      console.log('////', newToken);
       user.token = newToken;
       return user;
     }
     throw new Error("Invalid User");
   };
 
+
+
   model.authenticateToken = async function (token) {
     try {
-      const parsedToken = jwt.verify(token, process.env.SECRET || "samah");
+      const parsedToken = jwt.verify(token, process.env.SECRET || "tasneemo");
       const user = this.findOne({ where: { username: parsedToken.username } });
       if (user) {
         return user;
@@ -63,4 +66,4 @@ const userModel = (sequelize, DataTypes) => {
   return model;
 };
 
-module.exports = userModel;
+module.exports = users;

@@ -19,7 +19,7 @@ res.status(201).json(newRecored);
 }
 ///////////select *//////////////////
 async function getAll(req,res){
-    let record = await recordCollection.read();
+    let record = await recordCollection.get();
     res.status(200).json(record);
 
 }
@@ -29,7 +29,7 @@ async function updating(req,res){
 
     let id = parseInt(req.params.id);
     let newRecored = req.body;
-    let found = await recordCollection.read(id);
+    let found = await recordCollection.get(id);
     if (found) {
         let updated = await found.update(newRecored);
         res.status(201).json(updated);
@@ -48,7 +48,7 @@ async function deleting(req,res){
 async function getOneRecored(req,res)
 {
     const id = parseInt(req.params.id);
-    let recored = await recordCollection.read(id);
+    let recored = await recordCollection.get(id);
     res.status(200).json(recored);
 }
 module.exports=recordRouter;

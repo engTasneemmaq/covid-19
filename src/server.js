@@ -10,7 +10,6 @@ const signInRouter=require("../src/routes/signInRouter");
 const signUpRouter=require("../src/routes/signUpRouter");
 const secretRouter=require("../src/routes/secretRouter");
 const covidRouter = require("../src/routes/covidRecord");
-const usersUpdateRouter = require('../src/routes/usersUpdateRouter');
 
 
 const app = express();
@@ -29,7 +28,6 @@ app.use(covidRouter);
 app.use(signInRouter);
 app.use(signUpRouter);
 app.use(secretRouter);
-app.use(usersUpdateRouter);
 
 //error catch
 app.use(errorHandler);

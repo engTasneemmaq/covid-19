@@ -13,6 +13,6 @@ sequelize.define('records', {
     Date: 
     { type: DataTypes.DATE },
   },
-  { timestamps: false });
+  { timestamps: false })
 
 module.exports = recordModel;
