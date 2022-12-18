@@ -5,6 +5,14 @@ Building-a-server
 ## Deploy Link 
 [Railway Covid-19 ](https://covid-19-production.up.railway.app/)
 
+## Covid-19 App Screen Shot>>
+![1](./assets/covid-1.png)
+![2](./assets/covid-2.png)
+![3](./assets/covid-3.png)
+![4](./assets/covid-4.png)
+![5](./assets/covid-5.png)
+
+
 ## Configuration
 Configure the root of your repository with the following files and directories. Thoughfully name and organize any aditional configuration or module files.
 
