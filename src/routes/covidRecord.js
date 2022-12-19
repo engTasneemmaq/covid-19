@@ -3,11 +3,11 @@ const express = require("express");
 const {recordCollection} = require("../module/index");
 const recordRouter = express.Router();
 const bearer=require("../middlewares/bearer");
-recordRouter.get("/record",bearer,getAll);
-recordRouter.post("/record",bearer,creatRecord);
-recordRouter.put("/record/:id",bearer,updating);
-recordRouter.delete("/record/:id",bearer,deleting);
-recordRouter.get("/record/:id",bearer,getOneRecored);
+recordRouter.get("/record",getAll);
+recordRouter.post("/record",creatRecord);
+recordRouter.put("/record/:id",updating);
+recordRouter.delete("/record/:id",deleting);
+recordRouter.get("/record/:id",getOneRecored);
 
 //create record
 async function creatRecord(req,res){
